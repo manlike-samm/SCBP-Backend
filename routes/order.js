@@ -7,7 +7,6 @@ import {
   completedOrder,
   paymentMethod,
 } from "../controllers/orders.js";
-import auth from "../middleware/auth.js";
 
 const router = express.Router();
 router.get("/", getPosts);

@@ -5,6 +5,18 @@ import UserModal from "../models/user.js";
 
 const secret = "test";
 
+export const getUsers = async (req, res) => {
+  try {
+    const users = await UserModal.find({}, { username: 1 }).sort({
+      username: 1,
+    });
+
+    res.status(200).json(users.map((user) => user.username));
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
 export const signin = async (req, res) => {
   const { username, password } = req.body;
   console.log(password);
